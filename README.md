@@ -5,12 +5,6 @@ Welcome to **TrustBridge**, the decentralized platform that connects lenders and
 
 ---
 
-## 🌐 Live Preview
-
-🔗 **[View Site](https://trustbridge.vercel.app/)**
-
----
-
 ## 🛠️ Tech Stack
 
 The TrustBridge landing page is built using:
