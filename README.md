@@ -1,46 +1,44 @@
-# 🌉 TrustBridge - Landing Page
 
-Welcome to **TrustBridge**, the decentralized platform for secure, transparent, and effortless P2P microloans. This landing page provides an elegant interface to showcase the key features of our innovative solution.
+# 🌉 TrustBridge – Decentralized Lending Marketplace
 
----
-
-## 🌐 Preview
-
-🚀 **[Live Preview](https://trust-bridge-cr.vercel.app/)**
+Welcome to **TrustBridge**, the decentralized platform that connects lenders and borrowers through secure, transparent, and non-custodial microloans powered by Stellar and Trustless Work. This landing page showcases the key features of our solution and guides users through the platform experience.
 
 ---
 
-## 🛠️ Technology Stack
+## 🌐 Live Preview
 
-TrustBridge's landing page is built using:
-
-- **Next.js**: Fast and efficient server-side rendering.
-- **React**: Component-based, dynamic user experience.
-- **Tailwind CSS**: Beautiful and responsive styling.
-- **TypeScript**: Type safety for a seamless developer experience.
+🔗 **[View Site](https://trustbridge.vercel.app/)**
 
 ---
 
-## 🚀 Installation & Setup
+## 🛠️ Tech Stack
 
-1. **Clone the repository** and **install dependencies**:
+The TrustBridge landing page is built using:
 
-   ```bash
-   git clone https://github.com/TrustBridgeCR/Landing.git
-   cd Landing
-   npm install
-   ```
+- **Next.js** – Server-side rendering and optimized performance
+- **React** – Interactive and component-based architecture
+- **Tailwind CSS** – Modern, responsive UI styling
+- **TypeScript** – Strong typing and improved developer experience
+- **Lucide Icons** – Elegant iconography
+- **ShadCN/UI** – Accessible and reusable UI components
 
-2. **Run the development server**:
+---
 
-   ```bash
-   npm run dev
-   ```
+## 💡 What is TrustBridge?
 
-3. Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
+TrustBridge empowers decentralized finance by enabling anyone to fund approved loan requests securely and instantly via smart contracts — without intermediaries or custody of funds. Built on **Stellar** for speed and **Trustless Work** for execution.
+
+---
+
+## 📬 Contact
+
+- X (Twitter): [@TrustBridgecr](https://x.com/TrustBridgecr)
+- Telegram: [@TrustBridge](https://t.me/TrustBridge)
+- Email: [trustbridge.cr30@gmail.com](mailto:hello@trustbridge.app)
+- GitHub: [TrustBridgeCR](https://github.com/TrustBridgeCR)
 
 ---
 
 ## 📜 License
 
-© 2024 TrustBridge. Released under the [MIT License](https://github.com/TrustBridgeCR/Landing/blob/main/LICENSE).
+© 2025 TrustBridge. Released under the [MIT License](https://github.com/TrustBridgeCR/Landing/blob/main/LICENSE).
