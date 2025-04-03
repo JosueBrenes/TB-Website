@@ -24,6 +24,7 @@ TrustBridge's landing page is built using:
 ## 🚀 Installation & Setup
 
 1. **Clone the repository** and **install dependencies**:
+
    ```bash
    git clone https://github.com/TrustBridgeCR/Landing.git
    cd Landing
@@ -31,6 +32,7 @@ TrustBridge's landing page is built using:
    ```
 
 2. **Run the development server**:
+
    ```bash
    npm run dev
    ```
