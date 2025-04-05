@@ -30,36 +30,43 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="container space-y-16 py-24 md:py-32">
-      <div className="mx-auto max-w-[58rem] text-center">
-        <h2 className="font-bold text-3xl leading-[1.1] sm:text-3xl md:text-5xl">
+    <section className="container space-y-8 sm:space-y-12 md:space-y-16 py-16 sm:py-20 md:py-24 lg:py-32">
+      <div className="mx-auto max-w-[58rem] text-center px-4">
+        <h2 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
           Why Choose TrustBridge?
         </h2>
-        <p className="mt-4 text-muted-foreground sm:text-lg">
+        <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-muted-foreground">
           The fastest way to connect with verified loan requests in a secure,
           transparent and decentralized way.
         </p>
       </div>
-      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2">
+      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 sm:gap-6 md:gap-8 md:grid-cols-2 px-4">
         {features.map((feature) => (
           <div
             key={feature.name}
-            className="relative overflow-hidden rounded-lg border bg-background p-8"
+            className="relative overflow-hidden rounded-lg border bg-background p-4 sm:p-6 md:p-8"
           >
-            <div className="flex items-center gap-4">
-              {typeof feature.icon === "string" ? (
-                <Image
-                  src={feature.icon}
-                  alt={feature.name}
-                  width={32}
-                  height={32}
-                />
-              ) : (
-                <feature.icon className="h-8 w-8" />
-              )}
-              <h3 className="font-bold">{feature.name}</h3>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+              <div className="flex-shrink-0 mb-2 sm:mb-0">
+                {typeof feature.icon === "string" ? (
+                  <Image
+                    src={feature.icon || "/placeholder.svg"}
+                    alt={feature.name}
+                    width={32}
+                    height={32}
+                    className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+                  />
+                ) : (
+                  <feature.icon className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-emerald-500" />
+                )}
+              </div>
+              <h3 className="font-bold text-base sm:text-lg md:text-xl">
+                {feature.name}
+              </h3>
             </div>
-            <p className="mt-2 text-muted-foreground">{feature.description}</p>
+            <p className="mt-2 text-sm sm:text-base text-muted-foreground">
+              {feature.description}
+            </p>
           </div>
         ))}
       </div>
