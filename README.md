@@ -1,5 +1,6 @@
+![ ](https://github.com/user-attachments/assets/9201806d-7116-44d7-9df0-6f73c6f3d3f3)
 
-# 🌉 TrustBridge – Decentralized Lending Marketplace
+# TrustBridge – Decentralized Lending Marketplace
 
 Welcome to **TrustBridge**, the decentralized platform that connects lenders and borrowers through secure, transparent, and non-custodial microloans powered by Stellar and Trustless Work. This landing page showcases the key features of our solution and guides users through the platform experience.
 
