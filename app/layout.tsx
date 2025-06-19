@@ -1,29 +1,19 @@
-import "./globals.css"
-import { Inter } from "next/font/google"
-import type React from "react"
-import type { Metadata } from "next"
-import MouseMoveEffect from "@/components/mouse-move-effect"
-
-const inter = Inter({ subsets: ["latin"] })
+import type { Metadata } from "next";
+import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "TrustBridge – Decentralized Lending Marketplace",
-  description:
-    "TrustBridge connects lenders and borrowers through secure, non-custodial microloans powered by Stellar and Trustless Work.",
-  generator: "TrustBridge",
-}
+  title: "TrustBridge",
+  description: "Decentralized P2P Lending. Built on Trust.",
+};
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode
-}) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.className} bg-background text-foreground antialiased`}>
-        <MouseMoveEffect />
-        {children}
-      </body>
+    <html lang="en">
+      <body>{children}</body>
     </html>
-  )
+  );
 }
