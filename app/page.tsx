@@ -1,30 +1,45 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { motion, useAnimation, type Variants } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import { ArrowRight, Zap, Lock, Users, Code, HandCoins, Landmark, FileText } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion, useAnimation, type Variants } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import {
+  ArrowRight,
+  Zap,
+  Lock,
+  Users,
+  Code,
+  HandCoins,
+  Landmark,
+  FileText,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 
 // Custom hook for scroll-triggered animations
 const useScrollAnimation = (threshold = 0.1) => {
-  const controls = useAnimation()
+  const controls = useAnimation();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold,
-  })
+  });
 
   useEffect(() => {
     if (inView) {
-      controls.start("visible")
+      controls.start("visible");
     }
-  }, [controls, inView])
+  }, [controls, inView]);
 
-  return { ref, controls }
-}
+  return { ref, controls };
+};
 
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
@@ -37,70 +52,98 @@ const sectionVariants: Variants = {
       staggerChildren: 0.2,
     },
   },
-}
+};
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-}
+};
 
 interface TeamMember {
-  name: string
-  role: string
-  imageUrl: string
+  name: string;
+  role: string;
+  imageUrl: string;
 }
 
 const teamMembers: TeamMember[] = [
-  { name: "Josué Brenes", role: "CEO & FullStack Developer", imageUrl: "/images/team/josue-brenes.png" },
-  { name: "Daniel Coto", role: "FrontEnd Developer", imageUrl: "/images/team/daniel-coto.png" },
-  { name: "Yuliana Gonzáles", role: "BackEnd Developer", imageUrl: "/images/team/yuliana-gonzales.png" },
-  { name: "Sebastian Mena", role: "Product Lead", imageUrl: "/images/team/sebastian-mena.png" },
-]
+  {
+    name: "Josué Brenes",
+    role: "CEO & FullStack Developer",
+    imageUrl: "/images/team/josue-brenes.png",
+  },
+  {
+    name: "Daniel Coto",
+    role: "FrontEnd Developer",
+    imageUrl: "/images/team/daniel-coto.png",
+  },
+  {
+    name: "Yuliana Gonzáles",
+    role: "BackEnd Developer",
+    imageUrl: "/images/team/yuliana-gonzales.png",
+  },
+  {
+    name: "Sebastian Mena",
+    role: "Product Lead",
+    imageUrl: "/images/team/sebastian-mena.png",
+  },
+];
 
 export default function LandingPage() {
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  const heroAnim = useScrollAnimation(0.3)
-  const featuresAnim = useScrollAnimation(0.2)
-  const audienceAnim = useScrollAnimation(0.2)
-  const teamAnim = useScrollAnimation(0.1)
-  const ctaAnim = useScrollAnimation(0.2)
+  const heroAnim = useScrollAnimation(0.3);
+  const featuresAnim = useScrollAnimation(0.2);
+  const audienceAnim = useScrollAnimation(0.2);
+  const teamAnim = useScrollAnimation(0.1);
+  const ctaAnim = useScrollAnimation(0.2);
 
   const cardHoverEffect = {
     y: -8,
     scale: 1.03,
     transition: { type: "spring", stiffness: 300, damping: 15 },
-  }
+  };
 
   return (
     <div className="flex flex-col min-h-[100dvh] bg-black text-zinc-50">
       {/* Header */}
       <header
         className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-          isScrolled ? "bg-black/80 backdrop-blur-sm border-b border-zinc-800" : "bg-transparent"
+          isScrolled
+            ? "bg-black/80 backdrop-blur-sm border-b border-zinc-800"
+            : "bg-transparent"
         }`}
       >
         <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
           <Link href="#" className="flex items-center gap-2" prefetch={false}>
-            <Image src="/images/logo-icon-dark.png" alt="TrustBridge Logo" width={32} height={32} />
-            <span className="text-xl font-semibold tracking-tight">TrustBridge</span>
+            <Image
+              src="/images/logo-icon-dark.png"
+              alt="TrustBridge Logo"
+              width={32}
+              height={32}
+            />
+            <span className="text-xl font-semibold tracking-tight">
+              TrustBridge
+            </span>
           </Link>
           <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
-            {["Features", "For Whom?", "Team", "Docs"].map((item) => (
+            {["Features", "Team", "Docs"].map((item) => (
               <motion.div key={item} whileHover={{ y: -2 }}>
                 <Link
                   href={
                     item === "Docs"
                       ? "https://trustbridge.gitbook.io/trustbridge"
-                      : `#${item.toLowerCase().replace(" ", "-").replace("?", "")}`
+                      : `#${item
+                          .toLowerCase()
+                          .replace(" ", "-")
+                          .replace("?", "")}`
                   }
                   target={item === "Docs" ? "_blank" : "_self"}
                   rel={item === "Docs" ? "noopener noreferrer" : ""}
@@ -112,7 +155,11 @@ export default function LandingPage() {
               </motion.div>
             ))}
           </nav>
-          <Button asChild size="sm" className="bg-emerald-700 text-white hover:bg-emerald-800">
+          <Button
+            asChild
+            size="sm"
+            className="bg-emerald-700 text-white hover:bg-emerald-800"
+          >
             <Link href="#">
               Get Started <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
@@ -143,12 +190,23 @@ export default function LandingPage() {
             >
               Built on Trust.
             </motion.h1>
-            <motion.p variants={itemVariants} className="mx-auto max-w-[700px] text-zinc-300 md:text-xl mt-6">
-              TrustBridge connects borrowers and lenders directly through secure smart escrow contracts on the Stellar
-              blockchain. No intermediaries, just transparent and permissionless finance.
+            <motion.p
+              variants={itemVariants}
+              className="mx-auto max-w-[700px] text-zinc-300 md:text-xl mt-6"
+            >
+              TrustBridge connects borrowers and lenders directly through secure
+              smart escrow contracts on the Stellar blockchain. No
+              intermediaries, just transparent and permissionless finance.
             </motion.p>
-            <motion.div variants={itemVariants} className="mt-8 flex justify-center gap-4">
-              <Button asChild size="lg" className="bg-emerald-700 text-white hover:bg-emerald-800">
+            <motion.div
+              variants={itemVariants}
+              className="mt-8 flex justify-center gap-4"
+            >
+              <Button
+                asChild
+                size="lg"
+                className="bg-emerald-700 text-white hover:bg-emerald-800"
+              >
                 <Link href="#">Request a Loan</Link>
               </Button>
               <Button
@@ -157,7 +215,11 @@ export default function LandingPage() {
                 size="lg"
                 className="bg-black text-emerald-500 border border-emerald-700 hover:bg-emerald-950 hover:text-emerald-400 hover:border-emerald-600"
               >
-                <Link href="https://trustbridge.gitbook.io/trustbridge" target="_blank" rel="noopener noreferrer">
+                <Link
+                  href="https://trustbridge.gitbook.io/trustbridge"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Explore Docs <FileText className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -183,10 +245,12 @@ export default function LandingPage() {
                 <div className="inline-block rounded-lg bg-emerald-800/30 px-3 py-1 text-sm text-emerald-400 border border-emerald-700">
                   Key Features
                 </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">A New Era of Lending</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  A New Era of Lending
+                </h2>
                 <p className="max-w-[900px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  TrustBridge is designed from the ground up to provide a secure, transparent, and efficient lending
-                  experience.
+                  TrustBridge is designed from the ground up to provide a
+                  secure, transparent, and efficient lending experience.
                 </p>
               </div>
             </motion.div>
@@ -216,7 +280,11 @@ export default function LandingPage() {
                   desc: "A robust protocol and clear documentation make it easy for developers to build new applications and services on top of TrustBridge.",
                 },
               ].map((feature, i) => (
-                <motion.div key={i} variants={itemVariants} whileHover={cardHoverEffect}>
+                <motion.div
+                  key={i}
+                  variants={itemVariants}
+                  whileHover={cardHoverEffect}
+                >
                   <Card className="bg-zinc-900 border-zinc-800 text-white h-full transition-colors duration-300 hover:border-emerald-800">
                     <CardHeader className="flex flex-row items-center gap-4">
                       <div className="bg-emerald-700/20 p-3 rounded-full">
@@ -225,7 +293,9 @@ export default function LandingPage() {
                       <CardTitle>{feature.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <CardDescription className="text-zinc-400">{feature.desc}</CardDescription>
+                      <CardDescription className="text-zinc-400">
+                        {feature.desc}
+                      </CardDescription>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -249,7 +319,8 @@ export default function LandingPage() {
                 Built for Everyone in the Ecosystem
               </h2>
               <p className="mx-auto max-w-[600px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Whether you're looking to borrow, lend, or build, TrustBridge provides the tools you need.
+                Whether you're looking to borrow, lend, or build, TrustBridge
+                provides the tools you need.
               </p>
             </motion.div>
             <motion.div
@@ -273,7 +344,11 @@ export default function LandingPage() {
                   desc: "Contribute to the protocol or build innovative financial applications on a decentralized foundation.",
                 },
               ].map((audience, i) => (
-                <motion.div key={i} variants={itemVariants} whileHover={cardHoverEffect}>
+                <motion.div
+                  key={i}
+                  variants={itemVariants}
+                  whileHover={cardHoverEffect}
+                >
                   <div className="flex flex-col items-center space-y-4 p-6 rounded-lg border border-zinc-800 bg-zinc-950/50 h-full transition-colors duration-300 hover:border-emerald-800">
                     <audience.icon className="h-10 w-10 text-emerald-500" />
                     <h3 className="text-2xl font-bold">{audience.title}</h3>
@@ -302,9 +377,12 @@ export default function LandingPage() {
               <div className="inline-block rounded-lg bg-emerald-800/30 px-3 py-1 text-sm text-emerald-400 border border-emerald-700">
                 Our Team
               </div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Meet the Minds Behind TrustBridge</h2>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                Meet the Minds Behind TrustBridge
+              </h2>
               <p className="max-w-[900px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                A dedicated group of professionals passionate about revolutionizing finance.
+                A dedicated group of professionals passionate about
+                revolutionizing finance.
               </p>
             </motion.div>
             <motion.div
@@ -327,7 +405,9 @@ export default function LandingPage() {
                       className="object-contain w-full h-full"
                     />
                   </div>
-                  <h3 className="text-xl font-semibold text-white">{member.name}</h3>
+                  <h3 className="text-xl font-semibold text-white">
+                    {member.name}
+                  </h3>
                   <p className="text-emerald-500">{member.role}</p>
                 </motion.div>
               ))}
@@ -345,14 +425,20 @@ export default function LandingPage() {
         >
           <div className="container mx-auto grid items-center justify-center gap-4 px-4 text-center md:px-6">
             <motion.div variants={itemVariants} className="space-y-3">
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Ready to Bridge Your Trust?</h2>
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
+                Ready to Bridge Your Trust?
+              </h2>
               <p className="mx-auto max-w-[600px] text-zinc-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Join the future of decentralized finance today. Explore the platform or dive into our documentation to
-                get started.
+                Join the future of decentralized finance today. Explore the
+                platform or dive into our documentation to get started.
               </p>
             </motion.div>
             <motion.div variants={itemVariants} className="mt-6">
-              <Button asChild size="lg" className="bg-emerald-700 text-white hover:bg-emerald-800">
+              <Button
+                asChild
+                size="lg"
+                className="bg-emerald-700 text-white hover:bg-emerald-800"
+              >
                 <Link href="#">
                   Launch App <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -366,19 +452,35 @@ export default function LandingPage() {
       <footer className="bg-black border-t border-zinc-800">
         <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 py-8 md:flex-row md:px-6">
           <div className="flex items-center gap-2">
-            <Image src="/images/logo-icon-dark.png" alt="TrustBridge Logo" width={24} height={24} />
-            <p className="text-sm text-zinc-400">&copy; {new Date().getFullYear()} TrustBridge. All rights reserved.</p>
+            <Image
+              src="/images/logo-icon-dark.png"
+              alt="TrustBridge Logo"
+              width={24}
+              height={24}
+            />
+            <p className="text-sm text-zinc-400">
+              &copy; {new Date().getFullYear()} TrustBridge. All rights
+              reserved.
+            </p>
           </div>
           <nav className="flex gap-4 sm:gap-6">
-            <Link href="#" className="text-sm hover:underline underline-offset-4 text-zinc-400" prefetch={false}>
+            <Link
+              href="#"
+              className="text-sm hover:underline underline-offset-4 text-zinc-400"
+              prefetch={false}
+            >
               Terms of Service
             </Link>
-            <Link href="#" className="text-sm hover:underline underline-offset-4 text-zinc-400" prefetch={false}>
+            <Link
+              href="#"
+              className="text-sm hover:underline underline-offset-4 text-zinc-400"
+              prefetch={false}
+            >
               Privacy
             </Link>
           </nav>
         </div>
       </footer>
     </div>
-  )
+  );
 }
